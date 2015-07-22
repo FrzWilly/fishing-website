@@ -8,6 +8,7 @@
       <link rel="stylesheet" type="text/css" href="style.css" />
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script type="text/javascript" src="http://sdk.sitcon.camp/facebook-sdk.js"></script>
       <script type="text/javascript">
 
       var sss = "honey";
@@ -15,11 +16,19 @@
       console.log(sss + " in this shop is " + cost + " NT.");
       alert("太幸運了，您抽重了萬分之一的大獎");
       $(document).ready(function(){
-      	console.log( $('input[name=out]').val() );
-      	console.log( $('input[name=one]').attr('type') );
-      	$('input').css('border-color', 'blue');
-      	$('div.inp').append('<div id="holo">Hello Sir</div>');
-      	$('#holo').remove();
+      	FB.setFansPage('SITCONCamp');
+
+        FB.getSitconInfo(function (res)){
+          console.log(res);
+
+          $('body').append('<h1>'_+ res.name +'</h1>');
+          $('body').append("<br />");
+          $('body').append('<div>'+ res.about +'</div>');
+          $('body').append("<br />");
+
+
+
+        }
       })
 
       $.ajax({
