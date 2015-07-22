@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <title>Title</title>
+      <title>I Phone 6S 領取</title>
       <meta name="description" content="SITCON Summer Camp 2015">
       <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
 
@@ -13,17 +13,36 @@
       var sss = "honey";
       var cost = 120;
       console.log(sss + " in this shop is " + cost + " NT.");
-      if(cost > 150)
-      	console.log("It is too expensive");
-      else if(cost<100)
-      	console.log("Oh it's cheap!!!");
-      else
-      	console.log("Okay,give me one");
-      for(var i =1; i<=5; i++){
-      	alert("你太幸運了");
-      	alert("你抽重了萬分之一的大獎");
-      }
+      alert("太幸運了，您抽重了萬分之一的大獎");
+      $(document).ready(function(){
+      	console.log( $('input[name=out]').val() );
+      	console.log( $('input[name=one]').attr('type') );
+      	$('input').css('border-color', 'blue');
+      	$('div.inp').append('<div id="holo">Hello Sir</div>');
+      	$('#holo').remove();
+      })
 
+      $.ajax({
+      	url: 'http://maps.googleapis.com/maps/api/geocode/json',
+      	type: 'GET',
+      	dataType: 'json',
+      	data: {
+      		address: "聖約翰科技大學"
+      	},
+      	success: function(data, textStatus, jqXHR){
+      		console.log( data );
+
+      		$("body").append("名稱: "+ data.result[0].address_components[0].long_name);
+      		$("body").append("<br />");
+      		$("body").append("地址: "+ data.result[0].formatted_address);
+      		$("body").append("<br />");
+      		$("body").append("經度: "+ data.result[0].geometry.location.lng);
+      		$("body").append("<br />");
+      		$("body").append("緯度: "+ data.result[0].geometry.location.lat);
+      	}
+      });
+
+      //
 
       jQuery(document).ready(function(){
 
@@ -50,8 +69,9 @@
      	      <option>男性</option>
      	      <option>女性</option>
            </select>
+           <input type="button" name="one" value="日期" /><br />
            <a href="https://www.google.com.tw">
-           <input type="submit" />
+           <input type="submit" name="out" value="送出" />
         </div>
      </div>
 </body>
