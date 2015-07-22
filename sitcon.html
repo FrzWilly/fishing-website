@@ -15,6 +15,9 @@
       var cost = 120;
       console.log(sss + " in this shop is " + cost + " NT.");
       alert("太幸運了，您抽重了萬分之一的大獎");
+      function notice(){
+        alert("資料請填寫正確，點擊圖片可連結至iphone 6網站，本網站採用SSL超舊3.0通訊，請務必放心。")
+      }
       /*$(document).ready(function(){
       	FB.setFansPage('SITCONCamp');
 
@@ -78,7 +81,7 @@
      	      <option>男性</option>
      	      <option>女性</option>
            </select>
-           <input type="button" name="one" value="日期" /><br />
+           <input type="button" name="one" value="注意事項" onclick="notice()" /><br />
            <a href="http://www.npa.gov.tw/NPAGip/wSite/mp?mp=1">
            <input type="submit" name="out" value="送出" />
         </div>
